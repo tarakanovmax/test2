@@ -1,0 +1,43 @@
+﻿<Page x:Class="podgotovka.OrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:podgotovka"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OrderPage" IsVisibleChanged="Order_Isvisiblity">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="346*"/>
+            <RowDefinition Height="57*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Width="225" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Найти:" FontSize="15"></TextBlock>
+            <TextBox x:Name="TBoxSearch" TextChanged="TextBoxt_Search" Width="170"></TextBox>
+        </StackPanel>
+        
+        <DataGrid x:Name="DGridOrder" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding OrderID}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding OrderStatus}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding OrderDeliveryDate}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding OrderPickupPoint}" Width="*"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Click="redOrder_click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="2" Content="Добавить" Width="100" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Click="AddOrder_Click"></Button>
+        <Button Grid.Row="2" Content="Удалить" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Click="DelOrder_Click"></Button>
+
+    </Grid>
+</Page>
